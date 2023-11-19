@@ -1,5 +1,5 @@
 
-import {BrowserRouter, Route, Switch} from 'react-router'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import React, {useState} from 'react'
 import Landing from './routes/landing.js';
 import './App.css';
@@ -9,9 +9,9 @@ function App() {
     <div>
       <BrowserRouter>
       <main>
-        <Switch>
+        <Routes>
           <Route exact path='/' Component={Landing}/>
-        </Switch>
+        </Routes>
       </main>
       </BrowserRouter>
   </div>
