@@ -1,21 +1,22 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import { NavLink } from 'react-router-dom';
+
 
 export default function TopNav(){
     return(
         <div className="navigation">
-        <ul className="menu">
-            <li>
+            <Navbar>
                 <NavLink to='/'>
-                    <p> HOME |</p>
-                </NavLink></li>
-            <li>
+                    HOME | &nbsp;
+                </NavLink>
                 <NavLink to='/searches'>
-                    <p> LIBRARY INDEX | </p>
-                </NavLink></li>
-            
-        </ul>
-    </div>
+                    LIBRARY INDEX | &nbsp;
+                </NavLink>
+                <NavLink to='/searchPage'>
+                    SEARCH PAGE INDEX | &nbsp;
+                </NavLink>
+            </Navbar>
+        </div>
     )
 }
-
