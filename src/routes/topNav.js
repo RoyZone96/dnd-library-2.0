@@ -16,9 +16,6 @@ export default function TopNav(){
                 <NavLink to='/searchPage'>
                     SEARCH PAGE INDEX | &nbsp;
                 </NavLink>
-                <NavLink to='/searchNav'>
-                    SEARCH NAV INDEX | &nbsp;
-                </NavLink>
             </Navbar>
         </div>
     )
