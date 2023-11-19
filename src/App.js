@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Landing from './routes/landing.js';
-import SearchPage from './routes/searchpage.js';
-import TopNav from './components/topnav.js';
 import './App.css';
-
-
+import SearchNav from './components/searchnav.js';
+import TopNav from './components/topnav.js';
+import SearchPage from './routes/searchpage.js';
 
 function App() {
   return(
@@ -15,7 +14,9 @@ function App() {
         <TopNav />
         <Routes>
           <Route exact path='/' Component={Landing}/>
-          <Route path='searches/' Component={SearchPage}/>
+          <Route exact path='/searchPage' Component={SearchPage}/>
+          <Route exact path='/searchNav' Component={SearchNav}/>
+          <Route exact path='/topNav' Component={TopNav}/>
         </Routes>
       </main>
       </BrowserRouter>

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useState } from 'react';
 import SearchNav from '../components/searchnav';
-
 
 
 export default function SearchPage(){
