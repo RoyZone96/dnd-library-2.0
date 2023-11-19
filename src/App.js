@@ -1,12 +1,11 @@
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import React, {useState} from 'react'
 import Landing from './routes/landing.js';
 import './App.css';
-import SearchPage from './routes/searchPage.js';
-import SearchNav from './routes/searchNav.js';
-import TopNav from './routes/topNav.js';
+import SearchNav from './components/searchnav.js';
+import TopNav from './components/topnav.js';
+import SearchPage from './routes/searchpage.js';
 
 function App() {
   return(
