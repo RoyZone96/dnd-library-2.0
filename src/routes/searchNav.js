@@ -4,6 +4,8 @@ import React from 'react';
 export default function SearchNav(){
 
     return(
-        <p>Placehlder para</p>
+        <div>
+            <p>Placehlder para for hte Sarch Nav</p>
+        </div>
     )
 }
