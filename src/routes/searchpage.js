@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import SearchNav from "../components/searchnav";
-import racePage from "../components/racepage";
+import RacePage from "../components/racepage";
 import axios from "axios";
 
 export default function SearchPage() {
@@ -31,11 +31,10 @@ let getSearchResult = (event) => {
         onChange={(event) => setSearchQuery(event.target.value)}
       />
       <button onClick={getSearchResult}>Search</button>
-      <p>Value of searchQuery: {searchQuery}</p>
-
-      <racePage raceToSearch={searchQuery} />
-
-      <div className="search-area"></div>
+      <p>Value of searchQuery: {searchQuery}</p>      
+      <div className="search-area">
+        <RacePage raceToSearch={searchQuery} />
+      </div>
     </div>
   );
 }
