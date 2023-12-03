@@ -1,30 +1,30 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 
 export default function SearchNav() {
   return (
     <div className="searchNav">
       <ul className="menu">
         <li>
-          <p>RACES</p>
+          <NavLink to="/searchRace">RACES</NavLink>
         </li>
         <li>
-            <p>BACKGROUNDS</p>
+            <NavLink>BACKGROUNDS</NavLink>
         </li>
         <li>
-          <p>CLASSES</p>
+          <NavLink>CLASSES</NavLink>
         </li>
         <li>
-          <p>SPELLS</p>
+          <NavLink>SPELLS</NavLink>
         </li>
         <li>
-            <p>FEATS</p>
+            <NavLink>FEATS</NavLink>
         </li>
         <li>
-          <p>MAGIC ITEMS</p>
+          <NavLink>MAGIC ITEMS</NavLink>
         </li>
         <li>
-            <p>MONSTERS</p>
+            <NavLink>MONSTERS</NavLink>
         </li>
       </ul>
     </div>
