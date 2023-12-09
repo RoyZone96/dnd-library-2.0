@@ -1,14 +1,13 @@
 import {useEffect, useState, React} from "react";
-import axios from "axios";
 import SearchQuery from "./searchquery";
-import RaceSearch from "./searches/racesearch";
+import backgroundSearch from "./searches/backgroundsSearch";
 
-export default function RacePage(){
+export default function backgroundPage(){
 
-    let [raceToSearch, setRaceToSearch] = useState("")
+    let [backgroundToSearch, setackgroundToSearch] = useState("")
 
-    let handleCallback = (raceQuery) => {
-        setRaceToSearch(raceQuery)
+    let handleCallback = (backgroundQuery) => {
+        setBackgroundToSearch(backgroundQuery)
     }
     
     return(
@@ -35,7 +34,7 @@ export default function RacePage(){
             */}
 
             <SearchQuery callbackFunc={handleCallback}/>
-            <RaceSearch raceToSearch = {raceToSearch}/>
+            <backgroundSearch backgroundToSearch = {backgroundToSearch}/>
         </div>
     )
 }
