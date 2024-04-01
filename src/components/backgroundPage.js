@@ -1,10 +1,10 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "./searchquery";
-import backgroundSearch from "./searches/backgroundsSearch";
+import BackgroundSearch from "./searches/backgroundsSearch";
 
-export default function backgroundPage(){
+export default function BackgroundPage(){
 
-    let [backgroundToSearch, setackgroundToSearch] = useState("")
+    let [backgroundToSearch, setBackgroundToSearch] = useState("")
 
     let handleCallback = (backgroundQuery) => {
         setBackgroundToSearch(backgroundQuery)
@@ -34,7 +34,7 @@ export default function backgroundPage(){
             */}
 
             <SearchQuery callbackFunc={handleCallback}/>
-            <backgroundSearch backgroundToSearch = {backgroundToSearch}/>
+            <BackgroundSearch backgroundToSearch = {backgroundToSearch}/>
         </div>
     )
 }

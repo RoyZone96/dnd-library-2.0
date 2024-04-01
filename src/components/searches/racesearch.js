@@ -27,6 +27,17 @@ export default function RaceSearch({ raceToSearch }) {
               value: ability.value,
             }))
         );
+        // useEffect(() => {
+        //   if (raceResult) { // Ensure raceResult is not null
+        //     const filteredAsi = raceResult.asi
+        //       .filter((ability) => ability.value > 0)
+        //       .map((ability) => ({
+        //         attribute: ability.attributes,
+        //         value: ability.value,
+        //       }));
+        //     setAbilityScoreImprovements(filteredAsi);
+        //   }
+        // }, [raceResult]);
 
         if (response.data.subraces) {
           //only set them if there are subraces\
@@ -68,6 +79,7 @@ export default function RaceSearch({ raceToSearch }) {
         console.log(err);
       });
   }, [raceToSearch]);
+  
   //const asi_values = raceResult.asi.map(arr => `<p>${arr.attributes} - ${arr.value}</p>`)
   return (
     <div>

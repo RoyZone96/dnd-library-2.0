@@ -1,5 +1,4 @@
 import {useEffect, useState, React} from "react";
-import axios from "axios";
 import SearchQuery from "./searchquery";
 import RaceSearch from "./searches/racesearch";
 

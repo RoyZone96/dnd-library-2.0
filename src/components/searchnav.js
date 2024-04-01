@@ -9,7 +9,7 @@ export default function SearchNav() {
           <NavLink to="/searchRace">RACES</NavLink>
         </li>
         <li>
-            <NavLink to="searchBackground">BACKGROUNDS</NavLink>
+            <NavLink to="/searchBackground">BACKGROUNDS</NavLink>
         </li>
         <li>
           <NavLink>CLASSES</NavLink>

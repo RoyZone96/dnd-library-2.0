@@ -24,17 +24,6 @@ let getSearchResult = (event) => {
   return (
     <div>
       <SearchNav />
-
-      {/* <label>Search Query: </label>
-      <input
-        type="text"
-        onChange={(event) => setSearchQuery(event.target.value)}
-      />
-      <button onClick={getSearchResult}>Search</button>
-      <p>Value of searchQuery: {searchQuery}</p>      
-      <div className="search-area">
-        <RacePage raceToSearch={searchQuery} />
-      </div> */}
     </div>
   );
 }
