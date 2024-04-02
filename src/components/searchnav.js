@@ -12,7 +12,7 @@ export default function SearchNav() {
             <NavLink to="/searchBackground">BACKGROUNDS</NavLink>
         </li>
         <li>
-          <NavLink>CLASSES</NavLink>
+          <NavLink to="/searchClass">CLASSES</NavLink>
         </li>
         <li>
           <NavLink>SPELLS</NavLink>

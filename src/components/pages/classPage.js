@@ -1,13 +1,13 @@
 import {useEffect, useState, React} from "react";
-import SearchQuery from "./searchquery";
-import RaceSearch from "./searches/racesearch";
+import SearchQuery from "../searchquery";
+import ClassSearch from "../searches/classSearch.js";
 
 export default function RacePage(){
 
-    let [raceToSearch, setRaceToSearch] = useState("")
+    let [classToSearch, setClassToSearch] = useState("")
 
-    let handleCallback = (raceQuery) => {
-        setRaceToSearch(raceQuery)
+    let handleCallback = (classToSearch) => {
+        setClassToSearch(classToSearch)
     }
     
     return(
@@ -34,7 +34,7 @@ export default function RacePage(){
             */}
 
             <SearchQuery callbackFunc={handleCallback}/>
-            <RaceSearch raceToSearch = {raceToSearch}/>
+            <ClassSearch classToSearch = {classToSearch}/>
         </div>
     )
 }

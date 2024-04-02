@@ -1,6 +1,6 @@
 import {useEffect, useState, React} from "react";
-import SearchQuery from "./searchquery";
-import BackgroundSearch from "./searches/backgroundsSearch";
+import SearchQuery from "../searchquery";
+import BackgroundSearch from "../searches/backgroundsSearch";
 
 export default function BackgroundPage(){
 
