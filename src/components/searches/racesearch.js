@@ -9,8 +9,11 @@ export default function RaceSearch({ raceToSearch }) {
   let raceUrl = `https://api.open5e.com/races/`;
 
   useEffect(() => {
+    
     //raceToSearch = raceToSearch.toLowerCase() //make sure it's human instead of Human for example, TODO: we may change how input is done
-    raceUrl += `${raceToSearch}`;
+    
+    if(raceToSearch !== ""){
+      raceUrl += `${raceToSearch}`;
     console.log(raceUrl);
     console.log("race url: " + raceUrl + "\traceToSearch: " + raceToSearch);
     axios
@@ -78,6 +81,8 @@ export default function RaceSearch({ raceToSearch }) {
         console.log("Error in getting the race: ");
         console.log(err);
       });
+    }
+    
   }, [raceToSearch]);
   
   //const asi_values = raceResult.asi.map(arr => `<p>${arr.attributes} - ${arr.value}</p>`)

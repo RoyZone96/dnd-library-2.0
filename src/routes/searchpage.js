@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import SearchNav from "../components/searchnav";
-import RacePage from "../components/racepage";
 import axios from "axios";
 
 export default function SearchPage() {
