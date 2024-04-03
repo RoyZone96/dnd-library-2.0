@@ -10,6 +10,7 @@ import BackgroundPage from './components/pages/BackgroundPage.js';
 import ClassPage from './components/pages/classPage.js'
 import SpellsPage from './components/pages/spellsPage.js';
 
+
 function App() {
   return(
     <div>
