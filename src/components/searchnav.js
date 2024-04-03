@@ -15,16 +15,16 @@ export default function SearchNav() {
           <NavLink to="/searchClass">CLASSES</NavLink>
         </li>
         <li>
-          <NavLink>SPELLS</NavLink>
+          <NavLink to="/searchSpells">SPELLS</NavLink>
         </li>
         <li>
-            <NavLink>FEATS</NavLink>
+            <NavLink to="/searchFeats">FEATS</NavLink>
         </li>
         <li>
-          <NavLink>MAGIC ITEMS</NavLink>
+          <NavLink to="/searchMagicItems">MAGIC ITEMS</NavLink>
         </li>
         <li>
-            <NavLink>MONSTERS</NavLink>
+            <NavLink to="/searchMonsters">MONSTERS</NavLink>
         </li>
       </ul>
     </div>
