@@ -9,7 +9,7 @@ import RacePage from './components/pages/racepage.js';
 import BackgroundPage from './components/pages/BackgroundPage.js';
 import ClassPage from './components/pages/classPage.js'
 import SpellsPage from './components/pages/spellsPage.js';
-
+import MonstersPage from './components/pages/monstersPage.js';
 
 function App() {
   return(
@@ -25,6 +25,7 @@ function App() {
           <Route exact path="/searchBackground" Component={BackgroundPage} />
           <Route exact path='/searchClass' Component={ClassPage} />
           <Route exact path="/searchSpells" Component={SpellsPage} />
+          <Route exact path='/searchMonsters' Component={MonstersPage} />
         </Routes>
       </main>
       </BrowserRouter>

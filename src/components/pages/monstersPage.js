@@ -1,13 +1,13 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
-import RaceSearch from "../searches/racesearch";
+import MonsterSearch from "../searches/monstersSearch.js";
 
-export default function RacePage(){
+export default function MonstersPage(){
 
-    let [raceToSearch, setRaceToSearch] = useState("")
+    let [monsterToSearch, setMonsterToSearch] = useState("")
 
-    let handleCallback = (raceQuery) => {
-        setRaceToSearch(raceQuery)
+    let handleCallback = (monsterQuery) => {
+        setMonsterToSearch(monsterQuery)
     }
     
     return(
@@ -34,7 +34,7 @@ export default function RacePage(){
             */}
 
             <SearchQuery callbackFunc={handleCallback}/>
-            <RaceSearch raceToSearch = {raceToSearch}/>
+            <MonsterSearch monsterToSearch = {monsterToSearch }/>
         </div>
     )
 }
