@@ -34,7 +34,7 @@ export default function MonstersPage(){
             */}
 
             <SearchQuery callbackFunc={handleCallback}/>
-            <MonsterSearch monsterToSearch = {monsterToSearch }/>
+            <MonsterSearch monsterToSearch = {monsterToSearch}/>
         </div>
     )
 }
