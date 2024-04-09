@@ -88,7 +88,7 @@ export default function MonsterSearch({ monsterToSearch }) {
             <li>Wisdom Save: {monsterResult.wisdom_save}</li>
             <li>Charisma Save: {monsterResult.charisma_save}</li>
           </ul>
-          {/* <h2> Skills: {monsterResult.skills}</h2> */}
+           <h2> Skills: {{monsterResult.skills.}}</h2> 
           <h2>Vulnerabilites: {monsterResult.damage_vulnerabilities}</h2>
           <h2>Damages Resistances: {monsterResult.damage_resistances}</h2>
           <h2>Damage Immunities: {monsterResult.damage_vulnerabilities}</h2>
@@ -96,6 +96,17 @@ export default function MonsterSearch({ monsterToSearch }) {
           <h2>Senses: {monsterResult.senses}</h2>
           <h2>Languages: {monsterResult.languages}</h2>
           <h2>Challenge Rating: {monsterResult.challenge_rating}</h2>
+
+          <h2>Special Abilities</h2>
+          <ul>
+            {specialAbilities.map((specialAbility) => {
+              return(
+                <li>
+                  <p>{specialAbility.name} - {specialAbility.desc}</p>
+                </li>
+              )
+            })}
+          </ul>
           <h2>Actions</h2>
           <ul>
             {actions.map((action) =>{
