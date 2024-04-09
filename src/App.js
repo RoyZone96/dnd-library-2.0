@@ -10,6 +10,8 @@ import BackgroundPage from './components/pages/BackgroundPage.js';
 import ClassPage from './components/pages/classPage.js'
 import SpellsPage from './components/pages/spellsPage.js';
 import MonstersPage from './components/pages/monstersPage.js';
+import FeatsPage from './components/pages/featsPage.js';
+import MagicItemsPage from './components/pages/magicItemPage.js'
 
 function App() {
   return(
@@ -26,6 +28,8 @@ function App() {
           <Route exact path='/searchClass' Component={ClassPage} />
           <Route exact path="/searchSpells" Component={SpellsPage} />
           <Route exact path='/searchMonsters' Component={MonstersPage} />
+          <Route exact path='/searchFeats' Component={FeatsPage} />
+          <Route exact path='/searchMagicItems' Component={MagicItemsPage} />
         </Routes>
       </main>
       </BrowserRouter>

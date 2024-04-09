@@ -6,7 +6,7 @@ export default function ClassSearch({ classToSearch }) {
   let [archetypes, setArchetypes] = useState([]);
   let [error, setError] = useState("");
 
-  let classUrl = `https://api.open5e.com/classes/`;
+ 
 
   useEffect(() => {
     let moddedClassToSearch = classToSearch.replace(" ", "-");
