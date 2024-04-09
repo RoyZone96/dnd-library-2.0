@@ -8,7 +8,7 @@ export default function MagicItemSearch( {magicItemToSearch} ){
     
 
     useEffect(() => {
-        let moddedItemToSearch = magicItemToSearch.replace(" ", "-")
+        let moddedItemToSearch = magicItemToSearch.replaceAll(" ", "-")
         let itemUrl = `https://api.open5e.com/magicitems/${moddedItemToSearch}`;
         axios
       .get(itemUrl)

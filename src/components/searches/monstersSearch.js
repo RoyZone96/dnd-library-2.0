@@ -100,8 +100,7 @@ export default function MonsterSearch({ monsterToSearch }) {
           <ul>
             {actions.map((action) =>{
               return(<li>
-                <p>{action.name}</p>
-                {action.desc}
+                <p>{action.name} - {action.desc}</p>
               </li>)
             })}
           </ul>
