@@ -88,7 +88,7 @@ export default function MonsterSearch({ monsterToSearch }) {
             <li>Wisdom Save: {monsterResult.wisdom_save}</li>
             <li>Charisma Save: {monsterResult.charisma_save}</li>
           </ul>
-           <h2> Skills: {{monsterResult.skills.}}</h2> 
+          {/* <h2> Skills: {monsterResult.skills}</h2> */}
           <h2>Vulnerabilites: {monsterResult.damage_vulnerabilities}</h2>
           <h2>Damages Resistances: {monsterResult.damage_resistances}</h2>
           <h2>Damage Immunities: {monsterResult.damage_vulnerabilities}</h2>
