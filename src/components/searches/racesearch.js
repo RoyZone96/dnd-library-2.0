@@ -92,7 +92,7 @@ export default function RaceSearch({ raceToSearch }) {
         <div>
           <h1>{raceResult?.name}</h1>
           <h2>
-            Walking Speed: {raceResult?.speed?.walk}, Flying Speed:{" "}
+            Walking Speed: {raceResult?.speed?.walk}, Flying Speed:
             {raceResult?.speed?.fly}, Swimming Speed: {raceResult?.speed?.swim}
           </h2>
           <p>{raceResult?.speed_desc}</p>

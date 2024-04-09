@@ -34,7 +34,7 @@ export default function FeatsPage(){
             */}
 
             <SearchQuery callbackFunc={handleCallback}/>
-            <FeatsSearch featToSearch = {setFeatToSearch}/>
+            <FeatsSearch featToSearch = {featToSearch}/>
         </div>
     )
 }
