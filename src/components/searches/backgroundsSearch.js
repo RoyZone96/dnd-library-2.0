@@ -1,6 +1,6 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
-
+import ReactMarkdown from 'react-markdown';
 export default function BackgroundSearch({ backgroundToSearch }) {
   let [backgroundResult, setbackgroundResult] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
@@ -35,15 +35,16 @@ export default function BackgroundSearch({ backgroundToSearch }) {
       {backgroundResult != [] && (
         <div>
           <h1>{backgroundResult?.name}</h1>
-          <h2>{backgroundResult?.desc}</h2>
+          <ReactMarkdown>{backgroundResult?.desc}</ReactMarkdown>
           <h2>Skill Proficiencies: {backgroundResult?.skill_proficiencies}</h2>
-          <h2>Tool Proficienceies: {backgroundResult?.tool_proficiencies}</h2>
+          <h2>Tool Proficiencies: {backgroundResult?.tool_proficiencies}</h2>
           <h2>Languages: {backgroundResult?.languages}</h2>
           <h2>Equipment: {backgroundResult?.equipment}</h2>
           <h2>
-            {" "}
             {backgroundResult?.feature} : {backgroundResult?.feature_desc}
           </h2>
+          <h2>Suggested Characteristics</h2>
+          <ReactMarkdown>{backgroundResult?.suggested_characteristics}</ReactMarkdown>
         </div>
       )}
     </div>

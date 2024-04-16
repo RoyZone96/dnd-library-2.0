@@ -116,13 +116,16 @@ if(monsterResult?.spell_list) spellLinks.push(monsterResult.spell)
 
           <h2>Skills</h2>
            <ul>  
-           {Object.entries(monsterResult.skills || {}).map((skillName) =>{
-              return(<div key={skillName}>
-                <li>
-                  <p>{skillName}</p>
-                </li>
-              </div>)})}
-           </ul>
+           {Object.entries(monsterResult.skills || {}).map((skillName) => {
+  return (
+    <div key={skillName[0]}>
+      <li>
+        <p>{`${skillName[0]}: ${skillName[1]}`}</p>
+      </li>
+    </div>
+  )
+})}
+</ul>
         
 
           <h2>Special Abilities</h2>
@@ -151,7 +154,7 @@ if(monsterResult?.spell_list) spellLinks.push(monsterResult.spell)
               </li>)
             })}
           </ul>
-          <h2>{monsterResult.environments}</h2>
+          <h2>{monsterResult.environments.join(', ')}</h2>
         </div>
       )}
     </div>
