@@ -1,12 +1,12 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ClassSearch({ classToSearch }) {
   let [classResult, setClassResult] = useState([]);
   let [archetypes, setArchetypes] = useState([]);
   let [error, setError] = useState("");
-
- 
 
   useEffect(() => {
     let moddedClassToSearch = classToSearch.replace(" ", "-");
@@ -15,7 +15,6 @@ export default function ClassSearch({ classToSearch }) {
       .get(classUrl)
       .then((response) => {
         setClassResult(response.data);
-        console.log(response.data);
         if (response.data.archetypes) {
           setArchetypes(
             response.data.archetypes.map((archetype) => ({
@@ -33,13 +32,13 @@ export default function ClassSearch({ classToSearch }) {
   }, [classToSearch]);
 
   return (
-    <div>
+    <div className="container bg-dark text-light p-5">
       {classResult != [] && (
         <div>
-          <h1>{classResult.name}</h1>
-          <p>{classResult.desc}</p>
-          <ul>
-            <h2>Stats</h2>
+          <ReactMarkdown className="display-4" as="h1">{classResult.name}</ReactMarkdown>
+          <ReactMarkdown className="lead">{classResult.desc}</ReactMarkdown>
+          <ReactMarkdown className="display-6" as="h2">Stats</ReactMarkdown>
+          <ul className="list-unstyled">
             <li>Hit Dice: {classResult.hit_die}</li>
             <li>Hp At 1st Level: {classResult.hp_at_1st_level}</li>
             <li>Hp At higher levels: {classResult.hp_at_higher_levels}</li>
@@ -51,12 +50,12 @@ export default function ClassSearch({ classToSearch }) {
             <li>Spellcasting: {classResult.spellcasting_ability}</li>
             <li>SubTypes: {classResult.subtypes_name}</li>
           </ul>
-          <ul>
+          <ul className="list-unstyled">
             {archetypes.map((archetype) => {
               return (
                 <li key={archetype.name}>
-                  <p>Name: {archetype.name}</p>
-                  <p>Description: {archetype.desc}</p>
+                  <ReactMarkdown as="p">{`Name: ${archetype.name}`}</ReactMarkdown>
+                  <ReactMarkdown>{`Description: ${archetype.desc}`}</ReactMarkdown>
                 </li>
               );
             })}

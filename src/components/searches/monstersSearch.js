@@ -107,17 +107,18 @@ export default function MonsterSearch({ monsterToSearch }) {
           <h3>{spellLinks.join(', ')}</h3>
 
           <h2>Skills</h2>
-          <ul>
-            {Object.entries(monsterResult.skills || {}).map((skillName) => {
-              return (
-                <div key={skillName[0]}>
-                  <li>
-                    <p>{`${skillName[0]}: ${skillName[1]}`}</p>
-                  </li>
-                </div>
-              );
-            })}
-          </ul>
+           <ul>  
+           {Object.entries(monsterResult.skills || {}).map((skillName) => {
+  return (
+    <div key={skillName[0]}>
+      <li>
+        <p>{`${skillName[0]}: ${skillName[1]}`}</p>
+      </li>
+    </div>
+  )
+})}
+</ul>
+        
 
           <h2>Special Abilities</h2>
           <ul>
@@ -155,9 +156,7 @@ export default function MonsterSearch({ monsterToSearch }) {
               );
             })}
           </ul>
-          {monsterResult && monsterResult.environments && (
-            <h2>{monsterResult.environments.join(", ")}</h2>
-          )}
+          <h2>{monsterResult.environments.join(', ')}</h2>
         </div>
       )}
     </div>

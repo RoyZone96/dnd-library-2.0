@@ -1,0 +1,69 @@
+.fantasy-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1a1a1a; /* Or any dark background */
+    border-radius: 10px;
+    border: 3px solid #4a3822; /* Imitating an old frame */
+  }
+  
+  .fantasy-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .fantasy-input {
+    flex: 1;
+    font-family: 'Cinzel', serif; /* A font that gives an old manuscript vibe */
+    font-size: 18px;
+    color: #dcd0c0; /* Light color for the input text */
+    background-color: #322c2c; /* Darker background for the input */
+    border: 2px solid #4a3822; /* Matching the container border */
+    border-radius: 5px;
+  }
+  
+  .fantasy-input::placeholder {
+    color: #dcd0c0; /* Light color for placeholder */
+  }
+  
+  .fantasy-button {
+    font-family: 'Cinzel', serif; /* A font that gives an old manuscript vibe */
+    padding: 5px 15px;
+    background-color: #79553d; /* A deep, rich color for the button */
+    border: 2px solid #4a3822; /* Border to match the theme */
+    border-radius: 5px;
+    color: #dcd0c0; /* Light color for the button text */
+    text-transform: uppercase; /* Optional: Makes the text all caps */
+    cursor: pointer; /* Changes the cursor to the pointer hand */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+
+
+  .fantasy-button:hover, .fantasy-button:focus {
+    background-color: #6b4429; /* A slightly darker color on hover/focus */
+    outline: none; /* Removes the outline to maintain the fantasy theme */
+    box-shadow: 0 0 10px 2px #dcd0c0; /* A light box-shadow for a glowing effect */
+  }
+
+  .fantasy-button::before, .fantasy-button::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: gold; /* Small gold squares as decorative elements */
+    position: absolute;
+    transform: rotate(45deg); /* Rotate to make them look like diamonds */
+    top: 50%;
+  }
+  
+  .fantasy-button::before {
+    left: -15px;
+    margin-top: -5px; /* Aligns the element vertically */
+  }
+  
+  .fantasy-button::after {
+    right: -15px;
+    margin-top: -5px; /* Aligns the element vertically */
+  }
