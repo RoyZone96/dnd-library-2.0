@@ -4,10 +4,10 @@ import axios from "axios";
 export default function MonsterSearch({ monsterToSearch }) {
   let [monsterResult, setMonsterResult] = useState([]);
   let [actions, setActions] = useState([]);
-  let [skills, setSkills] = useState([])
+  let [skills, setSkills] = useState([]);
   let [legendaryActions, setLegendaryActions] = useState([]);
   let [specialAbilities, setSpecialAbilities] = useState([]);
-  let [spells, setSpells] =useState([])
+  let [spells, setSpells] = useState([]);
   let [error, setError] = useState("");
 
   useEffect(() => {
@@ -17,25 +17,20 @@ export default function MonsterSearch({ monsterToSearch }) {
       .get(monsterUrl)
       .then((response) => {
         setMonsterResult(response.data);
-        console.log(response.data)
-      
-        console.log(response.data.spell_list)
-       
-      
+        console.log(response.data);
+
+        console.log(response.data.spell_list);
 
         setActions(
-          response.data.actions
-          .map((action) => ({
+          response.data.actions.map((action) => ({
             name: action.name,
             desc: action.desc,
             bonus: action.attack_bonus,
             damage: action.damage_dice,
-            damageBonus: action.damage_bonus
+            damageBonus: action.damage_bonus,
           }))
-        )
+        );
 
-       
-        
         if (response.data.legendary_actions) {
           setLegendaryActions(
             response.data.legendary_actions.map((legendaryActions) => ({
@@ -62,11 +57,8 @@ export default function MonsterSearch({ monsterToSearch }) {
         setError(error);
       });
   }, [monsterToSearch]);
-let spellLinks = []
-if(monsterResult?.spell_list) spellLinks.push(monsterResult.spell)
-
-
-
+  let spellLinks = [];
+  if (monsterResult?.spell_list) spellLinks.push(monsterResult.spell_list);
 
   return (
     <div>
@@ -102,7 +94,7 @@ if(monsterResult?.spell_list) spellLinks.push(monsterResult.spell)
             <li>Wisdom Save: {monsterResult.wisdom_save}</li>
             <li>Charisma Save: {monsterResult.charisma_save}</li>
           </ul>
-          
+
           <h2>Vulnerabilites: {monsterResult.damage_vulnerabilities}</h2>
           <h2>Damages Resistances: {monsterResult.damage_resistances}</h2>
           <h2>Damage Immunities: {monsterResult.damage_vulnerabilities}</h2>
@@ -112,46 +104,60 @@ if(monsterResult?.spell_list) spellLinks.push(monsterResult.spell)
           <h2>Challenge Rating: {monsterResult.challenge_rating}</h2>
 
           <h2>Spell List</h2>
-          <h2></h2>
+          <h3>{spellLinks}</h3>
 
           <h2>Skills</h2>
-           <ul>  
-           {Object.entries(monsterResult.skills || {}).map((skillName) =>{
-              return(<div key={skillName}>
-                <li>
-                  <p>{skillName}</p>
-                </li>
-              </div>)})}
-           </ul>
-        
+          <ul>
+            {Object.entries(monsterResult.skills || {}).map((skillName) => {
+              return (
+                <div key={skillName[0]}>
+                  <li>
+                    <p>{`${skillName[0]}: ${skillName[1]}`}</p>
+                  </li>
+                </div>
+              );
+            })}
+          </ul>
 
           <h2>Special Abilities</h2>
           <ul>
             {specialAbilities.map((specialAbility) => {
-              return(
+              return (
                 <li>
-                  <p>{specialAbility.name} - {specialAbility.desc}</p>
+                  <p>
+                    {specialAbility.name} - {specialAbility.desc}
+                  </p>
                 </li>
-              )
+              );
             })}
           </ul>
           <h2>Actions</h2>
           <ul>
-            {actions.map((action) =>{
-              return(<li>
-                <p>{action.name} - {action.desc}</p>
-              </li>)
+            {actions.map((action) => {
+              return (
+                <li>
+                  <p>
+                    {action.name} - {action.desc}
+                  </p>
+                </li>
+              );
             })}
           </ul>
           <h2>Legendary Actions</h2>
           <ul>
             {actions.map((legendaryAction) => {
-              return(<li>
-                <p>{legendaryAction.name} - {legendaryAction.desc}</p>
-              </li>)
+              return (
+                <li>
+                  <p>
+                    {legendaryAction.name} - {legendaryAction.desc}
+                  </p>
+                </li>
+              );
             })}
           </ul>
-          <h2>{monsterResult.environments}</h2>
+          {monsterResult && monsterResult.environments && (
+            <h2>{monsterResult.environments.join(", ")}</h2>
+          )}
         </div>
       )}
     </div>
