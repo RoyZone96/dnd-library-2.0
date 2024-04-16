@@ -44,6 +44,7 @@ export default function BackgroundSearch({ backgroundToSearch }) {
             {" "}
             {backgroundResult?.feature} : {backgroundResult?.feature_desc}
           </h2>
+          
         </div>
       )}
     </div>

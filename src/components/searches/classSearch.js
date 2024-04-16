@@ -61,6 +61,7 @@ export default function ClassSearch({ classToSearch }) {
               );
             })}
           </ul>
+          <table>{classResult.table}</table>
         </div>
       )}
     </div>

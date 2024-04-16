@@ -58,7 +58,7 @@ export default function MonsterSearch({ monsterToSearch }) {
       });
   }, [monsterToSearch]);
   let spellLinks = [];
-  if (monsterResult?.spell_list) spellLinks.push(monsterResult.spell_list);
+  if (monsterResult?.spell_list) spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
 
   return (
     <div>
@@ -104,7 +104,7 @@ export default function MonsterSearch({ monsterToSearch }) {
           <h2>Challenge Rating: {monsterResult.challenge_rating}</h2>
 
           <h2>Spell List</h2>
-          <h3>{spellLinks}</h3>
+          <h3>{spellLinks.join(', ')}</h3>
 
           <h2>Skills</h2>
           <ul>
