@@ -2,6 +2,7 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Landing from './routes/landing.js';
 import './App.css';
+import './fonts/SquareCaps.ttf';
 import SearchNav from './components/searchnav.js';
 import TopNav from './components/topnav.js';
 import SearchPage from './routes/searchpage.js'; 

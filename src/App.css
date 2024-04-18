@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: "SquareCaps";
+  src: url('C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\SquareCaps.ttf') format('truetype');
+}
+
 #background-img{
    background: rgba(0, 0, 0, 0) url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg') center center no-repeat fixed;
   background-size: cover;
@@ -14,7 +19,12 @@
 #landing-blurb{
   background: url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\landing-image.png') no-repeat center center;
   text-align: center;
+  
 
+}
+
+.intro{
+ font-family: "SquareCaps";
 }
 
 .navigation{
