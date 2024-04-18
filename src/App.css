@@ -2,9 +2,23 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#background-img{
+   background: rgba(0, 0, 0, 0) url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg') center center no-repeat fixed;
+  background-size: cover;
+}
+
+.general-app{
+ height: 1024px;
+}
+
+#landing-blurb{
+  background: url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\landing-image.png') no-repeat center center;
+  text-align: center;
+
+}
+
+.navigation{
+  background-color: black;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,26 +27,5 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

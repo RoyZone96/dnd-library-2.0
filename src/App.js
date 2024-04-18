@@ -15,7 +15,9 @@ import MagicItemsPage from './components/pages/magicItemPage.js'
 
 function App() {
   return(
-    <div>
+
+    <div id='background-img' alt='magical library'>
+    <div className='general-app'>
       <BrowserRouter>
       <main>
         <TopNav />
@@ -33,6 +35,7 @@ function App() {
         </Routes>
       </main>
       </BrowserRouter>
+  </div>
   </div>
   ) 
   

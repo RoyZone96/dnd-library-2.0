@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Landing() {
   return (
-    <div>
+    <div id='landing-blurb'>
       <h1 className="intro">Step into the wild world of Monsters and Magic</h1>
       <article className="forward">
         This application was dedicated to my love for tabletop RPGs particularly
