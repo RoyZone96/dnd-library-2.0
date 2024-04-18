@@ -17,14 +17,20 @@
 }
 
 #landing-blurb{
-  background: url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\landing-image.png') no-repeat center center;
+ 
+  width: 800px;
+  height: 620px;
   text-align: center;
-  
-
+  position: relative;
+  top: 75px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .intro{
  font-family: "SquareCaps";
+ color: rgb(88, 19, 14);
+ font-size: 55px
 }
 
 .navigation{
