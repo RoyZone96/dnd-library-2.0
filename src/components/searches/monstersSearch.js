@@ -58,7 +58,8 @@ export default function MonsterSearch({ monsterToSearch }) {
       });
   }, [monsterToSearch]);
   let spellLinks = [];
-  if (monsterResult?.spell_list) spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
+  if (monsterResult?.spell_list)
+    spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
 
   return (
     <div>
@@ -104,21 +105,20 @@ export default function MonsterSearch({ monsterToSearch }) {
           <h2>Challenge Rating: {monsterResult.challenge_rating}</h2>
 
           <h2>Spell List</h2>
-          <h3>{spellLinks.join(', ')}</h3>
+          <h3>{spellLinks.join(", ")}</h3>
 
           <h2>Skills</h2>
-           <ul>  
-           {Object.entries(monsterResult.skills || {}).map((skillName) => {
-  return (
-    <div key={skillName[0]}>
-      <li>
-        <p>{`${skillName[0]}: ${skillName[1]}`}</p>
-      </li>
-    </div>
-  )
-})}
-</ul>
-        
+          <ul>
+            {Object.entries(monsterResult.skills || {}).map((skillName) => {
+              return (
+                <div key={skillName[0]}>
+                  <li>
+                    <p>{`${skillName[0]}: ${skillName[1]}`}</p>
+                  </li>
+                </div>
+              );
+            })}
+          </ul>
 
           <h2>Special Abilities</h2>
           <ul>
@@ -156,7 +156,9 @@ export default function MonsterSearch({ monsterToSearch }) {
               );
             })}
           </ul>
-          <h2>{monsterResult.environments.join(', ')}</h2>
+          {monsterResult && monsterResult.environments && (
+            <h2>{monsterResult.environments.join(", ")}</h2>
+          )}
         </div>
       )}
     </div>
