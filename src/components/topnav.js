@@ -7,13 +7,13 @@ export default function TopNav(){
     return(
         <div className="navigation">
             <Navbar>
-                <NavLink to='/'>
+                <NavLink className="nav-option" to='/'>
                     HOME | &nbsp;
                 </NavLink>
-                <NavLink to='/searches'>
+                <NavLink  className="nav-option" to='/searches'>
                     LIBRARY INDEX | &nbsp;
                 </NavLink>
-                <NavLink to='/searchPage'>
+                <NavLink  className="nav-option" to='/searchPage'>
                     SEARCH PAGE INDEX | &nbsp;
                 </NavLink>
             </Navbar>

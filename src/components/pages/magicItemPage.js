@@ -1,6 +1,7 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
 import MagicItemSearch from "../searches/magicItemSearch.js";
+import SearchNav from "../searchnav.js";
 
 export default function MagicItemsPage(){
 
@@ -32,7 +33,7 @@ export default function MagicItemsPage(){
             
             
             */}
-
+            <SearchNav />
             <SearchQuery callbackFunc={handleCallback}/>
             <MagicItemSearch magicItemToSearch = {magicItemToSearch}/>
         </div>

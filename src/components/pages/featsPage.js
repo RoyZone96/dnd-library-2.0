@@ -1,6 +1,7 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
 import FeatsSearch from "../searches/featsSearch.js";
+import SearchNav from "../searchnav.js";
 
 export default function FeatsPage(){
 
@@ -32,7 +33,7 @@ export default function FeatsPage(){
             
             
             */}
-
+            <SearchNav />
             <SearchQuery callbackFunc={handleCallback}/>
             <FeatsSearch featToSearch = {featToSearch}/>
         </div>

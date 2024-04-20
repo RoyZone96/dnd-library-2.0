@@ -1,6 +1,7 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
 import ClassSearch from "../searches/classSearch.js";
+import SearchNav from "../searchnav.js";
 
 export default function RacePage(){
 
@@ -32,7 +33,7 @@ export default function RacePage(){
             
             
             */}
-
+            <SearchNav />
             <SearchQuery callbackFunc={handleCallback}/>
             <ClassSearch classToSearch = {classToSearch}/>
         </div>

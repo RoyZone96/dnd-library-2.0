@@ -1,6 +1,7 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
 import SpellsSearch from "../searches/spellsSearch.js";
+import SearchNav from "../searchnav.js";
 
 export default function SpellsPage(){
 
@@ -32,7 +33,7 @@ export default function SpellsPage(){
             
             
             */}
-
+            <SearchNav />
             <SearchQuery callbackFunc={handleCallback}/>
             <SpellsSearch spellsToSearch = {spellToSearch}/>
         </div>

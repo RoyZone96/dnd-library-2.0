@@ -32,7 +32,7 @@ export default function ClassSearch({ classToSearch }) {
   }, [classToSearch]);
 
   return (
-    <div className="container bg-dark text-light p-5">
+    <div className="scroll-container">
       {classResult != [] && (
         <div>
           <ReactMarkdown className="display-4" as="h1">{classResult.name}</ReactMarkdown>

@@ -1,6 +1,7 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
 import BackgroundSearch from "../searches/backgroundsSearch";
+import SearchNav from "../searchnav.js";
 
 export default function BackgroundPage(){
 
@@ -32,7 +33,7 @@ export default function BackgroundPage(){
             
             
             */}
-
+            <SearchNav />
             <SearchQuery callbackFunc={handleCallback}/>
             <BackgroundSearch backgroundToSearch = {backgroundToSearch}/>
         </div>

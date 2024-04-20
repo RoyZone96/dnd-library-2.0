@@ -11,6 +11,7 @@ export default function SearchQuery({ callbackFunc }) {
     }
 
     return (
+        
         <div className="fantasy-container">
             <form className="fantasy-form" onSubmit={getSearchResult}>
                 <input 

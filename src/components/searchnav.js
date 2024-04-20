@@ -6,25 +6,25 @@ export default function SearchNav() {
     <div className="searchNav">
       <ul className="menu">
         <li>
-          <NavLink to="/searchRace">RACES</NavLink>
+          <NavLink className="menu-item"  to="/searchRace">RACES</NavLink>
         </li>
         <li>
-            <NavLink to="/searchBackground">BACKGROUNDS</NavLink>
+            <NavLink className="menu-item" to="/searchBackground">BACKGROUNDS</NavLink>
         </li>
         <li>
-          <NavLink to="/searchClass">CLASSES</NavLink>
+          <NavLink className="menu-item" to="/searchClass">CLASSES</NavLink>
         </li>
         <li>
-          <NavLink to="/searchSpells">SPELLS</NavLink>
+          <NavLink className="menu-item" to="/searchSpells">SPELLS</NavLink>
         </li>
         <li>
-            <NavLink to="/searchMonsters">MONSTERS</NavLink>
+            <NavLink className="menu-item" to="/searchMonsters">MONSTERS</NavLink>
         </li>
         <li>
-            <NavLink to="/searchFeats">FEATS</NavLink>
+            <NavLink className="menu-item" to="/searchFeats">FEATS</NavLink>
         </li>
         <li>
-          <NavLink to="/searchMagicItems">MAGIC ITEMS</NavLink>
+          <NavLink className="menu-item" to="/searchMagicItems">MAGIC ITEMS</NavLink>
         </li>
         
       </ul>

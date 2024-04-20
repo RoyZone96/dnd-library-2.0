@@ -1,6 +1,7 @@
 import {useEffect, useState, React} from "react";
 import SearchQuery from "../searchquery";
 import MonsterSearch from "../searches/monstersSearch.js";
+import SearchNav from "../searchnav.js";
 
 export default function MonstersPage(){
 
@@ -32,7 +33,7 @@ export default function MonstersPage(){
             
             
             */}
-
+            <SearchNav />
             <SearchQuery callbackFunc={handleCallback}/>
             <MonsterSearch monsterToSearch = {monsterToSearch}/>
         </div>
