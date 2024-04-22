@@ -57,7 +57,7 @@ export default function RaceSearch({ raceToSearch }) {
   if (raceResult?.speed?.swim) speedTypes.push(`Swimming Speed: ${raceResult.speed.swim}`);
   speedString += speedTypes.length > 0 ? ', ' + speedTypes.join(', ') : '';
   return (
-    <div>
+    <div className="scroll-container">
       {raceResult && (
         <div>
           <h1>{raceResult.name}</h1>

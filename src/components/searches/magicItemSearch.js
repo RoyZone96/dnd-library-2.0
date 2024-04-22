@@ -25,10 +25,10 @@ export default function MagicItemSearch( {magicItemToSearch} ){
        
     
   return (
-    <div>
-        {itemResult != [] && ( 
+    <div className="scroll-container">
+        {itemResult && ( 
             <div>
-                <h1>{itemResult.name}</h1>
+                <h1 className="display-4">{itemResult.name}</h1>
                 <ul>
                     <li>{itemResult.type}</li>
                     <li>{itemResult.rarity}</li>

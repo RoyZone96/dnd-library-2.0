@@ -26,10 +26,10 @@ export default function FeatsSearch({featToSearch}) {
   }, [featToSearch]);
 
   return(
-    <div>
-        {featResult != [] && (
+    <div className="scroll-container" >
+        {featResult && (
             <div>
-                <h1> {featResult.name}</h1>
+                <h1 className="display-4"> {featResult.name}</h1>
                 <h2>{featResult.desc}</h2>
                 <h3>{featResult.effects_desc}</h3>
                 <h2>{featResult.prerequisite}</h2>

@@ -62,7 +62,7 @@ export default function MonsterSearch({ monsterToSearch }) {
     spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
 
   return (
-    <div>
+    <div className="scroll-container">
       {monsterResult != [] && (
         <div>
           <h1>{monsterResult.name}</h1>

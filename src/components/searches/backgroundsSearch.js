@@ -31,10 +31,10 @@ export default function BackgroundSearch({ backgroundToSearch }) {
   }, [backgroundToSearch]);
 
   return (
-    <div>
+    <div className="scroll-container">
       {backgroundResult != [] && (
         <div>
-          <h1>{backgroundResult?.name}</h1>
+          <h1 className="display-4">{backgroundResult?.name}</h1>
           <ReactMarkdown>{backgroundResult?.desc}</ReactMarkdown>
           <h2>Skill Proficiencies: {backgroundResult?.skill_proficiencies}</h2>
           <h2>Tool Proficiencies: {backgroundResult?.tool_proficiencies}</h2>

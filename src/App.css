@@ -12,6 +12,11 @@
   src: url('C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\BLKCHCRY.TTF') format("truetype");
 }
 
+@font-face {
+  font-family: "Cantebury";
+  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\Canterbury.ttf") format("truetype");
+}
+
 #background-img{
    background: rgba(0, 0, 0, 0) url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg') center center no-repeat fixed;
   background-size: cover;
@@ -60,7 +65,18 @@
 }
 
 .scroll-container{
-  
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(0, 0, 0, 0) url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\parchment.jpg') center center no-repeat fixed;
+  background-size: cover;
+  width:1000px;
+  height: 500px;
+  overflow: scroll;
+  font-family: "Cantebury";
+}
+
+.display-4{
+  font-family: "SquareCaps";
 }
 
 

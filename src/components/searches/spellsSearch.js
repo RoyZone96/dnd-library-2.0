@@ -32,12 +32,12 @@ export default function SpellsSearch( {spellsToSearch} ){
       }, [spellsToSearch]);
 
       return(
-        <div>
+        <div className="scroll-container">
             {spellResult != [] && (
                 <div>
-                    <h1>{spellResult.name}</h1>
+                    <h1 className="display-4">{spellResult.name}</h1>
                     <h2>{spellResult.school}</h2>
-                    <ul>
+                    <ul className="list-unstyled">
                       <li> <h3>Range: {spellResult.range}</h3></li>
                       <li><h3>Components: {spellResult.components}</h3></li>
                       <li><h3>Casting Time: {spellResult.casting_time}</h3></li>
