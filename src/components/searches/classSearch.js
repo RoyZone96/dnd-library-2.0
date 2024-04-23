@@ -4,12 +4,13 @@ import ReactMarkdown from "react-markdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ClassSearch({ classToSearch }) {
-  let [classResult, setClassResult] = useState([]);
+  let [classResult, setClassResult] = useState(null);
   let [archetypes, setArchetypes] = useState([]);
-  let [error, setError] = useState("");
+  let [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    let moddedClassToSearch = classToSearch.replace(" ", "-");
+    if(classToSearch !== ""){
+let moddedClassToSearch = classToSearch.replace(" ", "-");
     let classUrl = `https://api.open5e.com/classes/${moddedClassToSearch}`;
     axios
       .get(classUrl)
@@ -27,8 +28,11 @@ export default function ClassSearch({ classToSearch }) {
         }
       })
       .catch((error) => {
-        setError(error);
+        setErrorMessage(error);
+        alert("Error in getting the class: No such class exists.", error)
       });
+    }
+    
   }, [classToSearch]);
 
   return (
@@ -63,6 +67,7 @@ export default function ClassSearch({ classToSearch }) {
           <table>{classResult.table}</table>
         </div>
       )}
+      {errorMessage && {errorMessage}}
     </div>
   );
 }

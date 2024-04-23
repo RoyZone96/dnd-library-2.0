@@ -45,7 +45,7 @@ export default function RaceSearch({ raceToSearch }) {
           setErrorMessage("No errors, traveler");
         })
         .catch((err) => {
-          console.log("Error in getting the race: ", err);
+          console.log("Error in getting the race: No such race exists.", err);
           setErrorMessage("Error fetching data");
         });
     }

@@ -2,68 +2,69 @@ import { useEffect, useState, React } from "react";
 import axios from "axios";
 
 export default function MonsterSearch({ monsterToSearch }) {
-  let [monsterResult, setMonsterResult] = useState([]);
+  let [monsterResult, setMonsterResult] = useState(null);
   let [actions, setActions] = useState([]);
   let [skills, setSkills] = useState([]);
   let [legendaryActions, setLegendaryActions] = useState([]);
   let [specialAbilities, setSpecialAbilities] = useState([]);
   let [spells, setSpells] = useState([]);
-  let [error, setError] = useState("");
+  let [errorMessage, setError] = useState("");
 
   useEffect(() => {
-    let moddedMonsterToSearch = monsterToSearch.replaceAll(" ", "-");
-    let monsterUrl = `https://api.open5e.com/monsters/${moddedMonsterToSearch}`;
-    axios
-      .get(monsterUrl)
-      .then((response) => {
-        setMonsterResult(response.data);
-        console.log(response.data);
+    if (monsterToSearch !== "") {
+      let moddedMonsterToSearch = monsterToSearch.replaceAll(" ", "-");
+      let monsterUrl = `https://api.open5e.com/monsters/${moddedMonsterToSearch}`;
+      axios
+        .get(monsterUrl)
+        .then((response) => {
+          setMonsterResult(response.data);
 
-        console.log(response.data.spell_list);
-
-        setActions(
-          response.data.actions.map((action) => ({
-            name: action.name,
-            desc: action.desc,
-            bonus: action.attack_bonus,
-            damage: action.damage_dice,
-            damageBonus: action.damage_bonus,
-          }))
-        );
-
-        if (response.data.legendary_actions) {
-          setLegendaryActions(
-            response.data.legendary_actions.map((legendaryActions) => ({
-              name: legendaryActions.name,
-              desc: legendaryActions.desc,
+          setActions(
+            response.data.actions.map((action) => ({
+              name: action.name,
+              desc: action.desc,
+              bonus: action.attack_bonus,
+              damage: action.damage_dice,
+              damageBonus: action.damage_bonus,
             }))
           );
-        } else {
-          setLegendaryActions([]);
-        }
 
-        if (response.data.special_abilities) {
-          setSpecialAbilities(
-            response.data.special_abilities.map((specialAbilities) => ({
-              name: specialAbilities.name,
-              desc: specialAbilities.desc,
-            }))
-          );
-        } else {
-          setSpecialAbilities([]);
-        }
-      })
-      .catch((error) => {
-        setError(error);
-      });
+          if (response.data.legendary_actions) {
+            setLegendaryActions(
+              response.data.legendary_actions.map((legendaryActions) => ({
+                name: legendaryActions.name,
+                desc: legendaryActions.desc,
+              }))
+            );
+          } else {
+            setLegendaryActions([]);
+          }
+
+          if (response.data.special_abilities) {
+            setSpecialAbilities(
+              response.data.special_abilities.map((specialAbilities) => ({
+                name: specialAbilities.name,
+                desc: specialAbilities.desc,
+              }))
+            );
+          } else {
+            setSpecialAbilities([]);
+          }
+        })
+        .catch((error) => {
+          setError(error);
+          alert("Error in getting the monster: no such monster exists.", error)
+        });
+    }
   }, [monsterToSearch]);
+
   let spellLinks = [];
   if (monsterResult?.spell_list)
     spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
 
   return (
     <div className="scroll-container">
-      {monsterResult != [] && (
+      {monsterResult  && (
         <div>
           <h1>{monsterResult.name}</h1>
           <h2>

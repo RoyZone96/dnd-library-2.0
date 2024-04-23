@@ -18,8 +18,7 @@ export default function MagicItemSearch( {magicItemToSearch} ){
 
       })
       .catch((error) => {
-        error = "No such item exists."
-        setError(error);
+        alert("Error in getting the feat: No such item exists")
       });
   }, [magicItemToSearch]);
        
@@ -29,7 +28,7 @@ export default function MagicItemSearch( {magicItemToSearch} ){
         {itemResult && ( 
             <div>
                 <h1 className="display-4">{itemResult.name}</h1>
-                <ul>
+                <ul className="list-unstyled">
                     <li>{itemResult.type}</li>
                     <li>{itemResult.rarity}</li>
                     <li>{itemResult.requires_attunement}</li>
