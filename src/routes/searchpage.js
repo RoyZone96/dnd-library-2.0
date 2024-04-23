@@ -23,6 +23,9 @@ let getSearchResult = (event) => {
   return (
     <div>
       <SearchNav />
+      <article className="search-index">
+        <p>Select one of the searches and a magic scroll will appear to tell you what thou desirest most.</p>
+      </article>
     </div>
   );
 }

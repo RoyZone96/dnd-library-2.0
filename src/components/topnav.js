@@ -5,16 +5,17 @@ import { NavLink } from 'react-router-dom';
 
 export default function TopNav(){
     return(
-        <div className="navigation">
-            <Navbar>
+        <div className="navigation clearfix">
+            <h1 className='logo'>DnD Eternal Library</h1>
+            <Navbar className='navlist'>    
                 <NavLink className="nav-option" to='/'>
-                    HOME | &nbsp;
+                    HOME &nbsp;
                 </NavLink>
                 <NavLink  className="nav-option" to='/searches'>
-                    LIBRARY INDEX | &nbsp;
+                    LIBRARY INDEX  &nbsp;
                 </NavLink>
                 <NavLink  className="nav-option" to='/searchPage'>
-                    SEARCH PAGE INDEX | &nbsp;
+                    SEARCH PAGE INDEX  &nbsp;
                 </NavLink>
             </Navbar>
         </div>

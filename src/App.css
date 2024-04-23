@@ -4,30 +4,36 @@
 
 @font-face {
   font-family: "SquareCaps";
-  src: url('C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\SquareCaps.ttf') format('truetype');
+  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\SquareCaps.ttf")
+    format("truetype");
 }
 
 @font-face {
   font-family: "Blkchcry";
-  src: url('C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\BLKCHCRY.TTF') format("truetype");
+  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\BLKCHCRY.TTF")
+    format("truetype");
 }
 
 @font-face {
   font-family: "Cantebury";
-  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\Canterbury.ttf") format("truetype");
+  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\Canterbury.ttf")
+    format("truetype");
 }
 
-#background-img{
-   background: rgba(0, 0, 0, 0) url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg') center center no-repeat fixed;
+#background-img {
+  background: rgba(0, 0, 0, 0)
+    url("C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg")
+    center center no-repeat fixed;
   background-size: cover;
 }
 
-.general-app{
- height: 1024px;
+
+
+.general-app {
+  height: 1024px;
 }
 
-#landing-blurb{
- 
+#landing-blurb {
   width: 800px;
   height: 620px;
   text-align: center;
@@ -37,54 +43,108 @@
   margin-left: auto;
 }
 
-.intro{
- font-family: "SquareCaps";
- color: rgb(88, 19, 14);
- font-size: 55px
+.intro {
+  font-family: "SquareCaps";
+  color: rgb(88, 19, 14);
+  font-size: 55px;
 }
 
-.navigation{
-  background-color: black;
+.navigation {
+  width: 100%;
+  background-color: goldenrod;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: block;
+  
+}
+
+.logo {
+ float: left;
+  font-family: "SquareCaps";
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 13px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.navlist{
+  float: right;
+}
+
+.nav-option {
+  width: auto;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 10px;
   text-decoration: none;
+  font-family: "Blkchcry";
+  text-align: right;
+  color:rgb(88, 19, 14)
 }
 
-.menu{
+
+.nav-option:hover{
+  color: wheat
+}
+
+.menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: grey;
 }
 
-.menu-item{
-   float: left;
-   text-align: center;
-   padding: 16px;
-   text-decoration: none;
-   font-family: "Blkchcry";
+.menu-item {
+  float: left;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  font-family: "Blkchcry";
+  color:rgb(88, 19, 14)
 }
 
-.scroll-container{
+.menu-item:hover{
+ color: wheat
+}
+
+.scroll-container {
   margin-left: auto;
   margin-right: auto;
-  background: rgba(0, 0, 0, 0) url('C:\Projects\Personal Projects\dnd-library-2.0\src\images\parchment.jpg') center center no-repeat fixed;
+  background: rgba(0, 0, 0, 0)
+    url("C:\Projects\Personal Projects\dnd-library-2.0\src\images\parchment.jpg")
+    center center no-repeat fixed;
   background-size: cover;
-  width:1000px;
+  width: 1000px;
   height: 500px;
   overflow: scroll;
   font-family: "Cantebury";
 }
 
-.display-4{
+.display-4 {
   font-family: "SquareCaps";
 }
 
+.search-index {
+  font-family: "Cantebury";
+  color: rgb(88, 19, 14);
+  font-size: 55px;
+  width: 800px;
+  height: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-
-
