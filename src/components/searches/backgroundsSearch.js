@@ -29,7 +29,7 @@ export default function BackgroundSearch({ backgroundToSearch }) {
   return (
     <div className="scroll-container">
       {backgroundResult && (
-        <div>
+        <div className="fade-in">
           <h1 className="display-4">{backgroundResult?.name}</h1>
           <ReactMarkdown>{backgroundResult?.desc}</ReactMarkdown>
           <h2>Skill Proficiencies: {backgroundResult?.skill_proficiencies}</h2>

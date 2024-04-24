@@ -38,7 +38,7 @@ let moddedClassToSearch = classToSearch.replace(" ", "-");
   return (
     <div className="scroll-container">
       {classResult  && (
-        <div>
+        <div className="fade-in">
           <ReactMarkdown className="display-4" as="h1">{classResult.name}</ReactMarkdown>
           <ReactMarkdown className="lead">{classResult.desc}</ReactMarkdown>
           <ReactMarkdown className="display-6" as="h2">Stats</ReactMarkdown>

@@ -65,7 +65,7 @@ export default function MonsterSearch({ monsterToSearch }) {
   return (
     <div className="scroll-container">
       {monsterResult  && (
-        <div>
+        <div className="fade-in">
           <h1>{monsterResult.name}</h1>
           <h2>
             {monsterResult.size} {monsterResult.type}

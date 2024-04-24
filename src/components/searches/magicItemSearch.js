@@ -26,7 +26,7 @@ export default function MagicItemSearch( {magicItemToSearch} ){
   return (
     <div className="scroll-container">
         {itemResult && ( 
-            <div>
+            <div className="fade-in">
                 <h1 className="display-4">{itemResult.name}</h1>
                 <ul className="list-unstyled">
                     <li>{itemResult.type}</li>

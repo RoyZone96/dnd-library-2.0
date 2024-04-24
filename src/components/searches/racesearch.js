@@ -59,7 +59,7 @@ export default function RaceSearch({ raceToSearch }) {
   return (
     <div className="scroll-container">
       {raceResult && (
-        <div>
+        <div className="fade-in">
           <h1>{raceResult.name}</h1>
  
            <ReactMarkdown>{speedString}</ReactMarkdown>

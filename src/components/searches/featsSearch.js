@@ -28,9 +28,9 @@ export default function FeatsSearch({ featToSearch }) {
   }, [featToSearch]);
 
   return (
-    <div className="scroll-container">
+    <div className="scroll-container fade-in">
       {featResult && (
-        <div>
+        <div className="fade-in">
           <h1 className="display-4"> {featResult.name}</h1>
           <h2>{featResult.desc}</h2>
           <h3>{featResult.effects_desc}</h3>

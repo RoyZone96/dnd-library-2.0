@@ -34,8 +34,8 @@
 }
 
 #landing-blurb {
+  background-color: grey ;
   width: 800px;
-  height: 620px;
   text-align: center;
   position: relative;
   top: 75px;
@@ -142,6 +142,17 @@
   margin-right: auto;
   text-align: center;
 }
+
+
+.fade-in{
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

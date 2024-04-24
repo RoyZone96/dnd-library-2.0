@@ -29,7 +29,7 @@ export default function SpellsSearch({ spellsToSearch }) {
   return (
     <div className="scroll-container">
       {spellResult && (
-        <div>
+        <div className="fade-in">
           <h1 className="display-4">{spellResult.name}</h1>
           <h2>{spellResult.school}</h2>
           <ul className="list-unstyled">
