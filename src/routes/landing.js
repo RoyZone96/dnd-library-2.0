@@ -6,8 +6,8 @@ export default function Landing() {
   return (
     <div id='landing-blurb'>
       <h1 className="intro">Step into the wild world of Monsters and Magic</h1>
-      <article className="forward">
-        <img className="" src={dragon} alt='dragon versus adventurers'/>
+       <img className="landing-image" src={dragon} alt='dragon versus adventurers'/>
+       <article className="forward">
         <b>This application was dedicated to our love for tabletop RPGs particularly
         Dnd. Anything you want to know about the shattered realms and the
         creatures therein is
