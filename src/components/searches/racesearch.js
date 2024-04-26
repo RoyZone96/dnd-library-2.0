@@ -7,11 +7,12 @@ export default function RaceSearch({ raceToSearch }) {
   let [errorMessage, setErrorMessage] = useState("");
   let [abilityScoreImprovements, setAbilityScoreImprovements] = useState([]);
   let [subraces, setSubraces] = useState([]);
-  let raceUrl = `https://api.open5e.com/races/`;
+  let [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
     if (raceToSearch !== "") {
-      raceUrl += `${raceToSearch}`;
+      setFadeIn(false);
+      let raceUrl = `https://api.open5e.com/races/${raceToSearch}`;
       axios
         .get(raceUrl)
         .then((response) => {
@@ -50,19 +51,29 @@ export default function RaceSearch({ raceToSearch }) {
         });
     }
   }, [raceToSearch]);
+
+  useEffect(() => {
+    if (raceResult || errorMessage) {
+      setFadeIn(true);
+    }
+  });
+
   let speedString = "**Speed.**";
   let speedTypes = [];
-  if (raceResult?.speed?.walk) speedTypes.push(`Walking Speed: ${raceResult.speed.walk}`);
-  if (raceResult?.speed?.fly) speedTypes.push(`Flying Speed: ${raceResult.speed.fly}`);
-  if (raceResult?.speed?.swim) speedTypes.push(`Swimming Speed: ${raceResult.speed.swim}`);
-  speedString += speedTypes.length > 0 ? ', ' + speedTypes.join(', ') : '';
+  if (raceResult?.speed?.walk)
+    speedTypes.push(`Walking Speed: ${raceResult.speed.walk}`);
+  if (raceResult?.speed?.fly)
+    speedTypes.push(`Flying Speed: ${raceResult.speed.fly}`);
+  if (raceResult?.speed?.swim)
+    speedTypes.push(`Swimming Speed: ${raceResult.speed.swim}`);
+  speedString += speedTypes.length > 0 ? ", " + speedTypes.join(", ") : "";
   return (
     <div className="scroll-container">
       {raceResult && (
-        <div className="fade-in">
+        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
           <h1 className="display-4">{raceResult.name}</h1>
- 
-           <ReactMarkdown>{speedString}</ReactMarkdown>
+
+          <ReactMarkdown>{speedString}</ReactMarkdown>
 
           <ReactMarkdown>{raceResult.speed_desc}</ReactMarkdown>
           <h2>Racial ASI</h2>

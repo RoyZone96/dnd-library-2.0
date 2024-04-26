@@ -5,12 +5,15 @@ import ReactMarkdown from "react-markdown";
 export default function BackgroundSearch({ backgroundToSearch }) {
   let [backgroundResult, setbackgroundResult] = useState(null);
   let [errorMessage, setErrorMessage] = useState("");
-  let backgroundUrl = `https://api.open5e.com/backgrounds/`;
-
+  const [fadeIn, setFadeIn] = useState(true);
+ 
   useEffect(() => {
+
+
     if (backgroundToSearch !== "") {
+      setFadeIn(false);
       let spacedBackgroundtoSearch = backgroundToSearch.replace(" ", "-");
-      backgroundUrl += `${spacedBackgroundtoSearch}`;
+      let backgroundUrl = `https://api.open5e.com/backgrounds/${spacedBackgroundtoSearch}`;
       axios
         .get(backgroundUrl)
         .then((response) => {
@@ -26,10 +29,17 @@ export default function BackgroundSearch({ backgroundToSearch }) {
     }
   }, [backgroundToSearch]);
 
+  useEffect(() => {
+    if (backgroundResult || errorMessage) {
+      setFadeIn(true);
+    }
+  }, [backgroundResult, errorMessage]);
+
+
   return (
     <div className="scroll-container">
       {backgroundResult && (
-        <div className="fade-in">
+        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
           <h1 className="display-4">{backgroundResult?.name}</h1>
           <ReactMarkdown>{backgroundResult?.desc}</ReactMarkdown>
           <h2>Skill Proficiencies: {backgroundResult?.skill_proficiencies}</h2>

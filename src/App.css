@@ -1,3 +1,4 @@
+/* General Styles for the App */
 .App {
   text-align: center;
 }
@@ -20,16 +21,38 @@
     format("truetype");
 }
 
-#background-img {
-  background: rgba(0, 0, 0, 0)
-    url("C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg")
-    center center no-repeat;
-  background-size: cover;
+
+/* This will apply to all scrollable elements */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* This is your faded background color */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.7); 
 }
 
 .general-app {
   height: auto;
   min-height: 1000px;
+}
+
+/* Specific Styles for the App logo */
+#background-img {
+  background: rgba(0, 0, 0, 0)
+    url("C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg")
+    center center no-repeat;
+  background-size: cover;
 }
 
 #landing-blurb {
@@ -121,7 +144,7 @@
     center center no-repeat;
   width: 1047px;
   height: 570px;
-  overflow: hidden;
+  overflow: scroll;
   font-family: "Cantebury";
 }
 
@@ -153,8 +176,22 @@
 }
 
 .fade-in {
-  animation: fadeIn 5s;
+  animation: fadeIn ease 5s;
+  -webkit-animation: fadeIn ease 5s;
+  -moz-animation: fadeIn ease 5s;
+  -o-animation: fadeIn ease 5s;
+  -ms-animation: fadeIn ease 5s;
 }
+
+.fade-out {
+  animation: fadeOut ease 5s;
+  -webkit-animation: fadeOut ease 5s;
+  -moz-animation: fadeOut ease 5s;
+  -o-animation: fadeOut ease 5s;
+  -ms-animation: fadeOut ease 5s;
+}
+
+
 
 @keyframes fadeIn {
   0% {
@@ -162,6 +199,15 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

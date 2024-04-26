@@ -4,12 +4,13 @@ import axios from "axios";
 export default function SpellsSearch({ spellsToSearch }) {
   let [spellResult, setSpellResult] = useState(null);
   let [errorMessage, setErrorMessage] = useState("");
-  let spellUrl = `https://api.open5e.com/v1/spells/`;
+  let [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
     if (spellsToSearch !== "") {
+      setFadeIn(false);
       let spacedSpelltoSearch = spellsToSearch.replace(" ", "-");
-      spellUrl += `${spacedSpelltoSearch}`;
+      let spellUrl = `https://api.open5e.com/v1/spells/${spacedSpelltoSearch}`;
 
       axios
         .get(spellUrl)
@@ -21,15 +22,21 @@ export default function SpellsSearch({ spellsToSearch }) {
           setErrorMessage("No errors, traveler");
         })
         .catch((err) => {
-          alert("Error in getting the feat: No such feat exists", err)
+          alert("Error in getting the feat: No such feat exists", err);
         });
     }
   }, [spellsToSearch]);
 
+  useEffect(() => {
+    if (spellResult || errorMessage) {
+      setFadeIn(true);
+    }
+  });
+
   return (
     <div className="scroll-container">
       {spellResult && (
-        <div className="fade-in">
+        <div className={`${fadeIn ? "fade-in" : "fade-out"}`}>
           <h1 className="display-4">{spellResult.name}</h1>
           <h2>{spellResult.school}</h2>
           <ul className="list-unstyled">

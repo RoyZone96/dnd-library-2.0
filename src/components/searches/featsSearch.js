@@ -4,9 +4,11 @@ import axios from "axios";
 export default function FeatsSearch({ featToSearch }) {
   let [featResult, setFeatResult] = useState(null);
   let [errorMessage, setErrorMessage] = useState("");
+  let [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
     if (featToSearch !== "") {
+      setFadeIn(false);
       let moddedFeatToSearch = featToSearch.replaceAll(" ", "-");
       let featUrl = `https://api.open5e.com/feats/${moddedFeatToSearch}`;
 
@@ -27,10 +29,17 @@ export default function FeatsSearch({ featToSearch }) {
     }
   }, [featToSearch]);
 
+  useEffect(() => {
+    if (featResult || errorMessage) {
+      setFadeIn(true);
+    }
+  }, [featResult, errorMessage]);
+
+
   return (
     <div className="scroll-container fade-in">
       {featResult && (
-        <div className="fade-in">
+        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
           <h1 className="display-4"> {featResult.name}</h1>
           <h2>{featResult.desc}</h2>
           <h3>{featResult.effects_desc}</h3>

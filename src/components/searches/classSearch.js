@@ -1,47 +1,59 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function ClassSearch({ classToSearch }) {
   let [classResult, setClassResult] = useState(null);
   let [archetypes, setArchetypes] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
+  const [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
-    if(classToSearch !== ""){
-let moddedClassToSearch = classToSearch.replace(" ", "-");
-    let classUrl = `https://api.open5e.com/classes/${moddedClassToSearch}`;
-    axios
-      .get(classUrl)
-      .then((response) => {
-        setClassResult(response.data);
-        if (response.data.archetypes) {
-          setArchetypes(
-            response.data.archetypes.map((archetype) => ({
-              name: archetype.name,
-              desc: archetype.desc,
-            }))
-          );
-        } else {
-          setArchetypes([]);
-        }
-      })
-      .catch((error) => {
-        setErrorMessage(error);
-        alert("Error in getting the class: No such class exists.", error)
-      });
+    if (classToSearch !== "") {
+      setFadeIn(false);
+      let moddedClassToSearch = classToSearch.replace(" ", "-");
+      let classUrl = `https://api.open5e.com/classes/${moddedClassToSearch}`;
+      axios
+        .get(classUrl)
+        .then((response) => {
+          setClassResult(response.data);
+          if (response.data.archetypes) {
+            setArchetypes(
+              response.data.archetypes.map((archetype) => ({
+                name: archetype.name,
+                desc: archetype.desc,
+              }))
+            );
+          } else {
+            setArchetypes([]);
+          }
+        })
+        .catch((error) => {
+          setErrorMessage(error);
+          alert("Error in getting the class: No such class exists.", error);
+        });
     }
-    
   }, [classToSearch]);
+
+  useEffect(() => {
+    if (classResult || errorMessage) {
+      setFadeIn(true);
+    }
+  }, [classResult, errorMessage]);
+
 
   return (
     <div className="scroll-container">
-      {classResult  && (
-        <div className="fade-in">
-          <ReactMarkdown className="display-4" as="h1">{classResult.name}</ReactMarkdown>
+      {classResult && (
+        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
+          <ReactMarkdown className="display-4" as="h1">
+            {classResult.name}
+          </ReactMarkdown>
           <ReactMarkdown className="lead">{classResult.desc}</ReactMarkdown>
-          <ReactMarkdown className="display-6" as="h2">Stats</ReactMarkdown>
+          <ReactMarkdown className="display-6" as="h2">
+            Stats
+          </ReactMarkdown>
           <ul className="list-unstyled">
             <li>Hit Dice: {classResult.hit_die}</li>
             <li>Hp At 1st Level: {classResult.hp_at_1st_level}</li>
@@ -67,7 +79,7 @@ let moddedClassToSearch = classToSearch.replace(" ", "-");
           <table>{classResult.table}</table>
         </div>
       )}
-      {errorMessage && {errorMessage}}
+      {errorMessage && { errorMessage }}
     </div>
   );
 }

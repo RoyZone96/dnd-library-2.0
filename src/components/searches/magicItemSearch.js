@@ -4,10 +4,14 @@ import axios from "axios";
 export default function MagicItemSearch( {magicItemToSearch} ){
     let [itemResult, setItemResult] = useState([])
     let [ error, setError ] = useState("")
+    let [fadeIn, setFadeIn] = useState(true);
     
     
 
     useEffect(() => {
+        if (magicItemToSearch !== "") {
+            setFadeIn(false);
+        }
         let moddedItemToSearch = magicItemToSearch.replaceAll(" ", "-")
         let itemUrl = `https://api.open5e.com/magicitems/${moddedItemToSearch}`;
         axios
@@ -22,11 +26,16 @@ export default function MagicItemSearch( {magicItemToSearch} ){
       });
   }, [magicItemToSearch]);
        
+  useEffect(() => {
+    if (itemResult || error) {
+      setFadeIn(true);
+    }
+  })
     
   return (
     <div className="scroll-container">
         {itemResult && ( 
-            <div className="fade-in">
+            <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
                 <h1 className="display-4">{itemResult.name}</h1>
                 <ul className="list-unstyled">
                     <li>{itemResult.type}</li>

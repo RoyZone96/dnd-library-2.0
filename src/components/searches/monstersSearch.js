@@ -4,14 +4,14 @@ import axios from "axios";
 export default function MonsterSearch({ monsterToSearch }) {
   let [monsterResult, setMonsterResult] = useState(null);
   let [actions, setActions] = useState([]);
-  let [skills, setSkills] = useState([]);
   let [legendaryActions, setLegendaryActions] = useState([]);
   let [specialAbilities, setSpecialAbilities] = useState([]);
-  let [spells, setSpells] = useState([]);
   let [errorMessage, setError] = useState("");
+  let [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
     if (monsterToSearch !== "") {
+      setFadeIn(false);
       let moddedMonsterToSearch = monsterToSearch.replaceAll(" ", "-");
       let monsterUrl = `https://api.open5e.com/monsters/${moddedMonsterToSearch}`;
       axios
@@ -58,6 +58,12 @@ export default function MonsterSearch({ monsterToSearch }) {
     }
   }, [monsterToSearch]);
 
+  useEffect(() => {
+    if (monsterResult || errorMessage) {
+      setFadeIn(true);
+    }
+  });
+
   let spellLinks = [];
   if (monsterResult?.spell_list)
     spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
@@ -65,7 +71,7 @@ export default function MonsterSearch({ monsterToSearch }) {
   return (
     <div className="scroll-container">
       {monsterResult  && (
-        <div className="fade-in">
+        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
           <h1>{monsterResult.name}</h1>
           <h2>
             {monsterResult.size} {monsterResult.type}
