@@ -11,8 +11,8 @@ export default function TopNav(){
                 <NavLink className="nav-option" to='/'>
                     HOME &nbsp;
                 </NavLink>
-                <NavLink  className="nav-option" to='/searches'>
-                    LIBRARY INDEX  &nbsp;
+                <NavLink  className="nav-option" to='/users'>
+                    USERS TEST  &nbsp;
                 </NavLink>
                 <NavLink  className="nav-option" to='/searchPage'>
                     SEARCH PAGE INDEX  &nbsp;
