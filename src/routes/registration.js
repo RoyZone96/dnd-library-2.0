@@ -25,6 +25,7 @@ export default function Registration() {
     } else {
       try {
         await axios.post("http://localhost:8080/user", user);
+        alert("User registered successfully");
         navigate("/");
       } catch (error) {
         if (error.response) {
