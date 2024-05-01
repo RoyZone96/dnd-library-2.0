@@ -1,10 +1,10 @@
 import axios from "axios";
+import bcrypt from "bcryptjs";
 import { useState, useEffect, React } from "react";
 import { useNavigate } from "react-router";
 
 export default function Registration() {
-
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -20,11 +20,25 @@ export default function Registration() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
+    if (username === "" || password === "") {
+      alert("Username and password cannot be empty");
+      return;
+    } else if (password !== confirmPassword) {
       alert("Passwords do not match");
     } else {
       try {
-        await axios.post("http://localhost:8080/user", user);
+        // Check if username already exists
+        const existingUser = await axios.get(`http://localhost:8080/user/${username}`);
+        if (existingUser.data) {
+          alert("Username already exists");
+          return;
+        }
+  
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const userWithHashedPassword = { ...user, password: hashedPassword };
+  
+        await axios.post("http://localhost:8080/user", userWithHashedPassword);
         alert("User registered successfully");
         navigate("/");
       } catch (error) {
@@ -38,19 +52,18 @@ export default function Registration() {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
       }
     }
   };
 
   return (
-    <div >
+    <div>
       <h1>Registration</h1>
       <form onSubmit={(e) => onSubmit(e)} className="scroll-container">
         <div className="form-group">
-          <label for="username">Username</label>
-          {" "}
+          <label for="username">Username</label>{" "}
           <input
             type="text"
             className="form-control"
