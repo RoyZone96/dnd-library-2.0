@@ -17,6 +17,9 @@ export default function TopNav(){
                 <NavLink  className="nav-option" to='/registration'>
                     REGISTRATION  &nbsp;
                 </NavLink>
+                <NavLink  className="nav-option" to='/login'>
+                    LOGIN  &nbsp;
+                </NavLink>
                 <NavLink  className="nav-option" to='/searchPage'>
                     SEARCH PAGE INDEX  &nbsp;
                 </NavLink>

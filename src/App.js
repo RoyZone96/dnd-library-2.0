@@ -14,6 +14,7 @@ import FeatsPage from "./components/pages/featsPage.js";
 import MagicItemsPage from "./components/pages/magicItemPage.js";
 import UserList from "./routes/userList.js";
 import Registration from "./routes/registration.js";
+import Login from "./routes/login.js";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 Component={BackgroundPage}
               />
               <Route exact path="/registration" Component={Registration} />
+              <Route exact path="/login" Component={Login} />
               <Route exact path="/searchClass" Component={ClassPage} />
               <Route exact path="/searchSpells" Component={SpellsPage} />
               <Route exact path="/searchMonsters" Component={MonstersPage} />

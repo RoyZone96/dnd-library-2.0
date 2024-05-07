@@ -14,12 +14,12 @@ export default function Login() {
     e.preventDefault();
     try {
       const user = { username, password };
-      await axios.post("http://localhost:8080/login", user);
+      await axios.post("http://localhost:8080/user/login", user);
       alert("Logged in successfully");
       navigator("/");
       // navigate to another page here if needed
     } catch (error) {
-      alert("Error logging in");
+      alert("Username and/or password is incorrect");
     }
   };
 
