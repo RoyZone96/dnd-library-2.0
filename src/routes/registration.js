@@ -33,17 +33,29 @@ export default function Registration() {
           alert("Username already exists");
           return;
         }
-  
+      } catch (error) {
+        if (error.response && error.response.status !== 404) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx or is not 404
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+          return;
+        }
+      }
+
+      try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         const userWithHashedPassword = { ...user, password: hashedPassword };
-  
+
         await axios.post("http://localhost:8080/user", userWithHashedPassword);
         alert("User registered successfully");
         navigate("/");
       } catch (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
@@ -56,7 +68,7 @@ export default function Registration() {
         }
       }
     }
-  };
+};
 
   return (
     <div>
