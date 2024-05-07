@@ -28,15 +28,15 @@ export default function Registration() {
     } else {
       try {
         // Check if username already exists
-        const existingUser = await axios.get(`http://localhost:8080/user/${username}`);
-        if (existingUser.data) {
+        const existingUser = await axios.get(`http://localhost:8080/user/username/${username}`);
+        if (existingUser.status === 200) {
           alert("Username already exists");
           return;
         }
       } catch (error) {
         if (error.response && error.response.status !== 404) {
           // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx or is not 404
+          // that falls out of the range of 2xx and is not 404
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
