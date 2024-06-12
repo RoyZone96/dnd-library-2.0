@@ -47,9 +47,9 @@ export default function Registration() {
       try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const userWithHashedPassword = { ...user, password: hashedPassword };
+        const userWithHashedPassword = { ...user, password: hashedPassword, role: "user" };
 
-        await axios.post("http://localhost:8080/user", userWithHashedPassword);
+        await axios.post("http://localhost:8080/users/newuser", userWithHashedPassword);
         alert("User registered successfully");
         navigate("/");
       } catch (error) {
