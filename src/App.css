@@ -5,19 +5,19 @@
 
 @font-face {
   font-family: "SquareCaps";
-  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\SquareCaps.ttf")
+  src: url("./fonts/SquareCaps.ttf")
     format("truetype");
 }
 
 @font-face {
   font-family: "Blkchcry";
-  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\BLKCHCRY.TTF")
+  src: url("./fonts/BLKCHCRY.TTF")
     format("truetype");
 }
 
 @font-face {
   font-family: "Cantebury";
-  src: url("C:\Projects\Personal Projects\dnd-library-2.0\src\fonts\Canterbury.ttf")
+  src: url("./fonts/Canterbury.ttf")
     format("truetype");
 }
 
@@ -50,7 +50,7 @@
 /* Specific Styles for the App logo */
 #background-img {
   background: rgba(0, 0, 0, 0)
-    url("C:\Projects\Personal Projects\dnd-library-2.0\src\images\background.jpg")
+    url("./images/background.jpg")
     center center no-repeat;
   background-size: cover;
 }
@@ -140,7 +140,7 @@
   margin-left: auto;
   margin-right: auto;
   background: rgba(0, 0, 0, 0)
-    url("C:\Projects\Personal Projects\dnd-library-2.0\src\images\parchment.jpg")
+    url("./images/parchment.jpg")
     center center no-repeat;
   width: 1047px;
   height: 570px;

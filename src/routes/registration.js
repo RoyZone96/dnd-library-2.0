@@ -28,7 +28,7 @@ export default function Registration() {
     } else {
       try {
         // Check if username already exists
-        const existingUser = await axios.get(`http://localhost:8080/user/username/${username}`);
+        const existingUser = await axios.get(`http://localhost:8080/users/username/${username}`);
         if (existingUser.status === 200) {
           alert("Username already exists");
           return;
@@ -40,6 +40,7 @@ export default function Registration() {
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
+          alert("You got problems, yo!")
           return;
         }
       }
@@ -59,12 +60,15 @@ export default function Registration() {
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
+          alert("Server issue, check for status code.)")
         } else if (error.request) {
           // The request was made but no response was received
           console.log(error.request);
+          alert("Reaquest made, but not response received")
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
+          alert("Some other random bullshit happened; I dunno")
         }
       }
     }
