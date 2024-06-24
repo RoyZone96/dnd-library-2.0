@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-
 import { useNavigate } from "react-router";
 import { hashPassword } from 'bcryptjs'; // Import your hashing library
 
@@ -16,9 +15,10 @@ export default function Login() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const hashedPassword = hashPassword(password); // Hash the password
-      const user = { username, password: hashedPassword }; // Send the hashed password
-      await axios.post("http://localhost:8080/users/login", user);
+      const user = { username, password }; 
+      const response = await axios.post("http://localhost:8080/users/authenticate", user);
+      const token = response.data; 
+      localStorage.setItem('token', token); 
       alert("Logged in successfully");
       navigate("/");
     } catch (error) {
