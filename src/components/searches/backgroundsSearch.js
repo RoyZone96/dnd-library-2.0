@@ -1,15 +1,17 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons"; 
+import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons"; 
 
 export default function BackgroundSearch({ backgroundToSearch }) {
   let [backgroundResult, setbackgroundResult] = useState(null);
   let [errorMessage, setErrorMessage] = useState("");
   const [fadeIn, setFadeIn] = useState(true);
- 
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
   useEffect(() => {
-
-
     if (backgroundToSearch !== "") {
       setFadeIn(false);
       let spacedBackgroundtoSearch = backgroundToSearch.replace(" ", "-");
@@ -24,7 +26,10 @@ export default function BackgroundSearch({ backgroundToSearch }) {
           setErrorMessage("No errors, traveler");
         })
         .catch((err) => {
-          alert("Error in getting the background: No such background exists.", err)
+          alert(
+            "Error in getting the background: No such background exists.",
+            err
+          );
         });
     }
   }, [backgroundToSearch]);
@@ -35,11 +40,24 @@ export default function BackgroundSearch({ backgroundToSearch }) {
     }
   }, [backgroundResult, errorMessage]);
 
+  const toggleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+  };
+
+  const userHasToken = localStorage.getItem("token");
 
   return (
-    <div className="scroll-container">
+    <div className="scroll-container fade-in">
       {backgroundResult && (
-        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
+        <div className={`${fadeIn ? "fade-in" : "fade-out"}`}>
+         {userHasToken && (
+            <FontAwesomeIcon
+              icon={isBookmarked ? fasBookmark : farBookmark}
+              onClick={toggleBookmark}
+              style={{ cursor: "pointer" }}
+              className="bookmark-icon"
+            />
+          )}
           <h1 className="display-4">{backgroundResult?.name}</h1>
           <ReactMarkdown>{backgroundResult?.desc}</ReactMarkdown>
           <h2>Skill Proficiencies: {backgroundResult?.skill_proficiencies}</h2>

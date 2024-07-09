@@ -67,3 +67,9 @@
     right: -15px;
     margin-top: -5px; /* Aligns the element vertically */
   }
+
+  .bookmark-icon {
+    font-size: 44px;
+    float: right;
+    margin-right: 20px;
+  }

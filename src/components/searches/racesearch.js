@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons"; 
+import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons"; 
+
 
 export default function RaceSearch({ raceToSearch }) {
   let [raceResult, setRaceResult] = useState(null); // Changed from array to null for correct checking
@@ -8,6 +12,8 @@ export default function RaceSearch({ raceToSearch }) {
   let [abilityScoreImprovements, setAbilityScoreImprovements] = useState([]);
   let [subraces, setSubraces] = useState([]);
   let [fadeIn, setFadeIn] = useState(true);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
 
   useEffect(() => {
     if (raceToSearch !== "") {
@@ -58,6 +64,12 @@ export default function RaceSearch({ raceToSearch }) {
     }
   });
 
+  const toggleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+  };
+
+  const userHasToken = localStorage.getItem("token");
+
   let speedString = "**Speed.**";
   let speedTypes = [];
   if (raceResult?.speed?.walk)
@@ -68,9 +80,17 @@ export default function RaceSearch({ raceToSearch }) {
     speedTypes.push(`Swimming Speed: ${raceResult.speed.swim}`);
   speedString += speedTypes.length > 0 ? ", " + speedTypes.join(", ") : "";
   return (
-    <div className="scroll-container">
+    <div className="scroll-container fade-in">
       {raceResult && (
         <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
+          {userHasToken && (
+            <FontAwesomeIcon
+              icon={isBookmarked ? fasBookmark : farBookmark}
+              onClick={toggleBookmark}
+              style={{ cursor: "pointer" }}
+              className="bookmark-icon"
+            />
+          )}
           <h1 className="display-4">{raceResult.name}</h1>
 
           <ReactMarkdown>{speedString}</ReactMarkdown>

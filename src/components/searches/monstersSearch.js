@@ -1,5 +1,9 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons"; 
+import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons"; 
+
 
 export default function MonsterSearch({ monsterToSearch }) {
   let [monsterResult, setMonsterResult] = useState(null);
@@ -8,6 +12,7 @@ export default function MonsterSearch({ monsterToSearch }) {
   let [specialAbilities, setSpecialAbilities] = useState([]);
   let [errorMessage, setError] = useState("");
   let [fadeIn, setFadeIn] = useState(true);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     if (monsterToSearch !== "") {
@@ -64,14 +69,28 @@ export default function MonsterSearch({ monsterToSearch }) {
     }
   });
 
+  const toggleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+  }
+
+  const userHasToken = localStorage.getItem("token");
+
   let spellLinks = [];
   if (monsterResult?.spell_list)
     spellLinks.push(`<a>${monsterResult.spell_list}</a>`);
 
   return (
-    <div className="scroll-container">
+    <div className="scroll-container fade-in">
       {monsterResult  && (
         <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
+          {userHasToken && (
+            <FontAwesomeIcon
+              icon={isBookmarked ? fasBookmark : farBookmark}
+              onClick={toggleBookmark}
+              style={{ cursor: "pointer" }}
+              className="bookmark-icon"
+            />
+          )}
           <h1>{monsterResult.name}</h1>
           <h2>
             {monsterResult.size} {monsterResult.type}

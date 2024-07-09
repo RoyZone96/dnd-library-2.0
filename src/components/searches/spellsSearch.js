@@ -1,10 +1,16 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons"; 
+import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons"; 
+
+
 
 export default function SpellsSearch({ spellsToSearch }) {
   let [spellResult, setSpellResult] = useState(null);
   let [errorMessage, setErrorMessage] = useState("");
   let [fadeIn, setFadeIn] = useState(true);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     if (spellsToSearch !== "") {
@@ -33,10 +39,24 @@ export default function SpellsSearch({ spellsToSearch }) {
     }
   });
 
+  const toggleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+  };
+
+  const userHasToken = localStorage.getItem("token");
+
   return (
-    <div className="scroll-container">
+    <div className="scroll-container fade-in">
       {spellResult && (
         <div className={`${fadeIn ? "fade-in" : "fade-out"}`}>
+           {userHasToken && (
+            <FontAwesomeIcon
+              icon={isBookmarked ? fasBookmark : farBookmark}
+              onClick={toggleBookmark}
+              style={{ cursor: "pointer" }}
+              className="bookmark-icon"
+            />
+          )}
           <h1 className="display-4">{spellResult.name}</h1>
           <h2>{spellResult.school}</h2>
           <ul className="list-unstyled">

@@ -15,6 +15,7 @@ import MagicItemsPage from "./components/pages/magicItemPage.js";
 import UserList from "./routes/userList.js";
 import Registration from "./routes/registration.js";
 import Login from "./routes/login.js";
+import AccountPage from "./routes/accountPage.js";
 
 function App() {
   return (
@@ -29,13 +30,10 @@ function App() {
               <Route exact path="/searchNav" Component={SearchNav} />
               <Route exact path="/searchRace" Component={RacePage} />
               <Route exact path="/users" Component={UserList} />
-              <Route
-                exact
-                path="/searchBackground"
-                Component={BackgroundPage}
-              />
+              <Route exact path="/searchBackground" Component={BackgroundPage}/>
               <Route exact path="/registration" Component={Registration} />
               <Route exact path="/login" Component={Login} />
+              <Route exact path="/myAccount" Component={AccountPage} />
               <Route exact path="/searchClass" Component={ClassPage} />
               <Route exact path="/searchSpells" Component={SpellsPage} />
               <Route exact path="/searchMonsters" Component={MonstersPage} />

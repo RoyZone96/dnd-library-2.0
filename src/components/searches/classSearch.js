@@ -2,12 +2,17 @@ import { useEffect, useState, React } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons"; 
+import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons"; 
+
 
 export default function ClassSearch({ classToSearch }) {
   let [classResult, setClassResult] = useState(null);
   let [archetypes, setArchetypes] = useState([]);
   let [errorMessage, setErrorMessage] = useState("");
   const [fadeIn, setFadeIn] = useState(true);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     if (classToSearch !== "") {
@@ -42,11 +47,26 @@ export default function ClassSearch({ classToSearch }) {
     }
   }, [classResult, errorMessage]);
 
+  const toggleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+  };
+
+  const userHasToken = localStorage.getItem("token");
+
 
   return (
-    <div className="scroll-container">
+    <div className="scroll-container fade-in">
       {classResult && (
         <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
+
+{userHasToken && (
+            <FontAwesomeIcon
+              icon={isBookmarked ? fasBookmark : farBookmark}
+              onClick={toggleBookmark}
+              style={{ cursor: "pointer" }}
+              className="bookmark-icon"
+            />
+          )}
           <ReactMarkdown className="display-4" as="h1">
             {classResult.name}
           </ReactMarkdown>

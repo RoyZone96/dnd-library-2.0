@@ -30,7 +30,7 @@ export default function TopNav() {
         </NavLink>
         {hasToken && (
           <>
-            <NavLink className="nav-option" to="/myProfile">
+            <NavLink className="nav-option" to="/myAccount">
               MY PROFILE &nbsp;
             </NavLink>
           </>
