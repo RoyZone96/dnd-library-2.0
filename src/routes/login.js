@@ -19,9 +19,8 @@ export default function Login() {
       const response = await axios.post("http://localhost:8080/users/authenticate", user);
       const token = response.data; 
       localStorage.setItem('token', token); 
-      // console.log(token);
       alert("Logged in successfully");
-      navigate("/");
+      navigate("/accountPage");
     } catch (error) {
       alert("Username and/or password is incorrect");
     }
