@@ -92,6 +92,7 @@ export default function MonsterSearch({ monsterToSearch }) {
             />
           )}
           <h1>{monsterResult.name}</h1>
+          <h2><a>{monsterResult.document__url}</a></h2>
           <h2>
             {monsterResult.size} {monsterResult.type}
           </h2>

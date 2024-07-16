@@ -36,10 +36,6 @@ export default function BackgroundPage(){
             
             */}
             <SearchNav />
-            
-
-            
-
             <SearchQuery callbackFunc={handleCallback}/>
             <BackgroundSearch backgroundToSearch = {backgroundToSearch}/>
         </div>
