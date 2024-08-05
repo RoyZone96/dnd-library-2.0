@@ -45,27 +45,24 @@ export default function BackgroundSearch({ backgroundToSearch }) {
     const searchURL = `https://api.open5e.com/backgrounds/${spacedBackgroundtoSearch}`;
     const bookmarkAction = isBookmarked ? 'remove' : 'add';
     const backendURL = `http://localhost:8080/bookmarks/createBookmark`;
-  
+
     try {
       const response = await axios.post(backendURL, {
         url: searchURL,
-        dateMade: new Date().toISOString(),
-        userId: localStorage.getItem("id"),
+        createDate: new Date().toISOString(),
+        user_id: localStorage.getItem("id"),
       }, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem("token")}`, 
         }
       });
-  
+      console.log(response.data);
       if (bookmarkAction === 'add') {
         console.log('Bookmark added:', response.data);
         alert("Bookmark added!");
-
       } else {
         console.log('Bookmark removed:', response.data);
-      
       }
-  
       // Toggle the bookmark state
       setIsBookmarked(!isBookmarked);
     } catch (error) {
@@ -73,7 +70,6 @@ export default function BackgroundSearch({ backgroundToSearch }) {
       // Handle error, e.g., by showing an error message to the user
     }
   };
-
   const userHasToken = localStorage.getItem("token");
 
   return (

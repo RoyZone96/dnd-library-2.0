@@ -8,6 +8,7 @@ export default function LogoutButton() {
         localStorage.removeItem('token');
         localStorage.removeItem('role');
         navigate('/');
+        window.location.reload();
     };
 
     return (

@@ -40,8 +40,36 @@ export default function FeatsSearch({ featToSearch }) {
     }
   }, [featResult, errorMessage]);
 
-  const toggleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
+  const toggleBookmark = async () => {
+    
+    let moddedFeatToSearch = featToSearch.replaceAll(" ", "-");
+    const searchURL = `https://api.open5e.com/feats/${moddedFeatToSearch}`;
+    const bookmarkAction = isBookmarked ? 'remove' : 'add';
+    const backendURL = `http://localhost:8080/bookmarks/createBookmark`;
+
+    try {
+      const response = await axios.post(backendURL, {
+        url: searchURL,
+        createDate: new Date().toISOString(),
+        user_id: localStorage.getItem("id"),
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem("token")}`, 
+        }
+      });
+      console.log(response.data);
+      if (bookmarkAction === 'add') {
+        console.log('Bookmark added:', response.data);
+        alert("Bookmark added!");
+      } else {
+        console.log('Bookmark removed:', response.data);
+      }
+      // Toggle the bookmark state
+      setIsBookmarked(!isBookmarked);
+    } catch (error) {
+      console.error(`Error toggling bookmark: ${error}`);
+      // Handle error, e.g., by showing an error message to the user
+    }
   };
 
   const userHasToken = localStorage.getItem("token");

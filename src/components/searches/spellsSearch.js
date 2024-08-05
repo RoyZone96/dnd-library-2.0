@@ -39,8 +39,49 @@ export default function SpellsSearch({ spellsToSearch }) {
     }
   });
 
-  const toggleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
+  const toggleBookmark = async () => {
+    let spacedSpelltoSearch = spellsToSearch.replace(" ", "-");
+    const searchURL = `https://api.open5e.com/spells/${spacedSpelltoSearch}`;
+    const bookmarkAction = isBookmarked ? 'remove' : 'add';
+    const backendURL = `http://localhost:8080/bookmarks/createBookmark`;
+
+    try {
+      const response = await axios.post(backendURL, {
+        url: searchURL,
+        createDate: new Date().toISOString(),
+        user_id: localStorage.getItem("id"),
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem("token")}`, 
+        }
+      });
+      console.log(response.data);
+      if (bookmarkAction === 'add') {
+        console.log('Bookmark added:', response.data);
+        alert("Bookmark added!");
+      } else {
+        const bookmarkId = 'yourBookmarkIdHere';
+        const url = `http://localhost:8080/bookmarks/${bookmarkId}`;
+        
+        axios.delete(url, {
+          headers: {
+            // Include any necessary headers here
+            'Authorization': 'Bearer yourAuthTokenHere',
+          },
+        })
+        .then(response => {
+          console.log('Bookmark removed:', response.data);
+        })
+        .catch(error => {
+          console.error('Error removing bookmark:', error.response ? error.response.data : error.message);
+        });
+      }
+      // Toggle the bookmark state
+      setIsBookmarked(!isBookmarked);
+    } catch (error) {
+      console.error(`Error toggling bookmark: ${error}`);
+      // Handle error, e.g., by showing an error message to the user
+    }
   };
 
   const userHasToken = localStorage.getItem("token");

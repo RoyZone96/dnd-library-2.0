@@ -1,11 +1,11 @@
 import { useEffect, useState, React } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import UserAuthService from "../../services/UserAuthService";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons"; 
-import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons"; 
-
+import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function ClassSearch({ classToSearch }) {
   let [classResult, setClassResult] = useState(null);
@@ -47,19 +47,57 @@ export default function ClassSearch({ classToSearch }) {
     }
   }, [classResult, errorMessage]);
 
-  const toggleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
+  const toggleBookmark = async () => {
+    let moddedClassToSearch = classToSearch.replace(" ", "-");
+    const searchURL = `https://api.open5e.com/classes/${moddedClassToSearch}`;
+    const bookmarkAction = isBookmarked ? "remove" : "add";
+    const backendURL = `http://localhost:8080/bookmarks/createBookmark`;
+  
+    try {
+      const user_id = await UserAuthService.getUserIdFromToken();
+      if (!user_id) {
+        console.error('No valid user ID found. Unable to create bookmark.');
+        return;
+      }
+  
+      const payload = {
+        url: searchURL,
+        createDate: new Date().toISOString(),
+        user_id, // Use the correct user ID obtained from the token
+      };
+  
+      console.log(payload);
+  
+      const response = await axios.post(backendURL, payload, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        }
+      });
+  
+      console.log(response.data);
+  
+      if (bookmarkAction === 'add') {
+        console.log('Bookmark added:', response.data);
+        alert("Bookmark added!");
+      } else {
+        console.log('Bookmark removed:', response.data);
+      }
+  
+      // Toggle the bookmark state
+      setIsBookmarked(!isBookmarked);
+    } catch (error) {
+      console.error(`Error toggling bookmark: ${error}`);
+      // Handle error, e.g., by showing an error message to the user
+    }
   };
-
-  const userHasToken = localStorage.getItem("token");
-
+  
+  const userHasToken = localStorage.getItem("token")
 
   return (
     <div className="scroll-container fade-in">
       {classResult && (
-        <div className={`${fadeIn ? 'fade-in' : 'fade-out'}`}>
-
-{userHasToken && (
+        <div className={`${fadeIn ? "fade-in" : "fade-out"}`}>
+          {userHasToken && (
             <FontAwesomeIcon
               icon={isBookmarked ? fasBookmark : farBookmark}
               onClick={toggleBookmark}

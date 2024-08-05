@@ -20,7 +20,9 @@ export default function Login() {
       const token = response.data; 
       localStorage.setItem('token', token); 
       alert("Logged in successfully");
-      navigate("/accountPage");
+      console.log(token);
+      window.location.reload();
+      navigate("/myAccount");
     } catch (error) {
       alert("Username and/or password is incorrect");
     }
